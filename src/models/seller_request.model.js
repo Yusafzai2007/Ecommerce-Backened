@@ -7,16 +7,20 @@ const sellerSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    phone: {
+    shop_name: {
       type: String,
       required: true,
     },
-    shop_name: {
+    shop_description: {
       type: String,
       required: true,
     },
     shop_category: {
       type: String,
+      required: true,
+    },
+    phone: {
+      type: Number,
       required: true,
     },
     city: {
@@ -28,7 +32,10 @@ const sellerSchema = new mongoose.Schema(
       enum: ["pending", "approaved", "rejected"],
       default: "pending",
     },
-
+    shop_Img: {
+      type: String,
+      required: true,
+    },
     created_at: {
       type: Date,
       default: Date.now(),

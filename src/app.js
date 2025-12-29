@@ -17,8 +17,10 @@ app.use(express.static("public"));
 app.use(cookieParser());
 
 import userroutes from "./routes/user.route.js";
+import seller_request from "./routes/seller_request.route.js";
 
 app.use("/api/v1/ecommerce", userroutes);
+app.use("/api/v1/ecommerce", seller_request);
 
 // ================= Error Handling =================
 app.use((err, req, res, next) => {

@@ -56,11 +56,8 @@ const createaccount = asynhandler(async (req, res) => {
   }
 
   // 5️⃣ Response
-  res
-    .status(201)
-    .json(new apiResponse(201, "User created successfully", user));
+  res.status(201).json(new apiResponse(201, "User created successfully", user));
 });
-
 
 const user_login = asynhandler(async (req, res) => {
   const { email, password } = req.body;
@@ -117,30 +114,14 @@ const logout_user = asynhandler(async (req, res) => {
     .json(new apiResponse(200, "logout user successfully"));
 });
 
+const users = asynhandler(async (req, res) => {
+  const user = await User.find().select("-password");
 
-
-
-const users=asynhandler(async (req,res) => {
-  
-  const user=await User.find().select("-password")
-
-  if (!user || user.length===0) {
+  if (!user || user.length === 0) {
     throw new apiError(404, "no user found");
   }
 
-  res.status(200).json(new apiResponse(200,user,"all users"))
-
-})
-
-
-
-
-
-
-
-
-
-
-
+  res.status(200).json(new apiResponse(200, user, "all users"));
+});
 
 export { createaccount, user_login, logout_user, users };
