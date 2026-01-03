@@ -90,4 +90,24 @@ const updateshop = asynhandler(async (req, res) => {
   });
 });
 
-export { createshop, updateshop };
+const currentuser = asynhandler(async (req, res) => {
+  const userId = req.user._id;
+
+  const data = await seller_request.findOne({ userId: userId });
+
+  res
+    .status(200)
+    .json(new apiResponse(200, data, "current user shop fetched successfully"));
+});
+
+const deleteshop = asynhandler(async (req, res) => {
+  const { id } = req.params;
+
+  const deletedata = await seller_request.findByIdAndDelete(id);
+
+  res
+    .status(200)
+    .json(new apiResponse(200, deletedata, "delete data successfully"));
+});
+
+export { createshop, updateshop, currentuser, deleteshop };

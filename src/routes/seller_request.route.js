@@ -3,6 +3,8 @@ import { upload } from "../middlewares/multer.midlleware.js";
 import { jwtverify } from "../middlewares/auth.middleware.js";
 import {
   createshop,
+  currentuser,
+  deleteshop,
   updateshop,
 } from "../controllers/seller_request.controller.js";
 
@@ -31,5 +33,22 @@ route.post(
   ]),
   updateshop
 );
+
+route.get("/currentuser-seller-route", jwtverify, currentuser);
+
+
+
+
+
+route.delete("/delete-seller-request/:id",deleteshop)
+
+
+
+
+
+
+
+
+
 
 export default route;
