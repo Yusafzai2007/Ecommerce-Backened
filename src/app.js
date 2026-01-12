@@ -6,6 +6,7 @@ import cors from "cors";
 import userroutes from "./routes/user.route.js";
 import seller_request from "./routes/seller_request.route.js";
 import product_route from "./routes/product.route.js";
+import add_stock from "./routes/add_stock.route.js";
 
 app.use(
   cors({
@@ -23,6 +24,7 @@ app.use(cookieParser());
 app.use("/api/v1/ecommerce", userroutes);
 app.use("/api/v1/ecommerce", seller_request);
 app.use("/api/v1/ecommerce", product_route);
+app.use("/api/v1/ecommerce", add_stock);
 
 // ================= Error Handling =================
 app.use((err, req, res, next) => {

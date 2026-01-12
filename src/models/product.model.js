@@ -2,10 +2,19 @@ import mongoose from "mongoose";
 
 const productschema = new mongoose.Schema(
   {
+    shop_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "seller_request",
+      required: true,
+    },
+    user_id: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     title: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     description: {
@@ -45,16 +54,7 @@ const productschema = new mongoose.Schema(
       type: [String],
       required: true,
     },
-    shop_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "seller_request",
-      required: true,
-    },
-    user_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
-      required: true,
-    },
+
     created_at: {
       type: Date,
       default: Date.now(),

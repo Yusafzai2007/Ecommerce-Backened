@@ -18,7 +18,6 @@ const generateaccesstoekn = async (userId) => {
 const createaccount = asynhandler(async (req, res) => {
   const { userName, email, password } = req.body;
 
-  // 1️⃣ Required fields check
   if (!userName || !email || !password) {
     throw new apiError(400, "All fields are required");
   }
